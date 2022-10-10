@@ -4,13 +4,19 @@
 # @Email: 1547590574@qq.com
 # @Software: PyCharm
 from typing import List
-
+import heapq
 
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
-        map = {id:x for id, x in enumerate(nums)}
-        pass
+        nums = list(set(nums))
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 2:
+            return max(nums)
+        heapq.heapify(nums)
+        print(nums)
+        return heapq.nlargest(3,nums)[2]
 
 
 s = Solution()
-s.thirdMax([2, 2, 3, 1])
+print(s.thirdMax([2, 2, 3, 1]))
